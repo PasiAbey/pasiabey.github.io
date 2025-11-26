@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1200">
     <title>Portfolio - Machine Learning Engineer</title>
     
     <link rel="stylesheet" href="style.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -19,17 +18,17 @@
         <nav>
             <div class="logo">TG</div>
             <ul class="nav-links">
-                <li><a href="#">About me</a></li>
-                <li><a href="#">Skills</a></li>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#">Portfolio</a></li>
                 <li><a href="#" class="btn-contact">CONTACT ME</a></li>
             </ul>
         </nav>
 
-        <div class="hero">
+        <div class="hero" id="hero">
             <div class="left-content">
                 <p class="greeting">Hi, I am</p>
-                <h1>Pasindu Abeysundara</h1>
+                <h1>Pasindu</h1>
                 <p class="role">Machine Learning Engineer</p>
 
                 <div class="socials">
@@ -39,10 +38,28 @@
                 </div>
             </div>
 
+            <div class="about-glass-card">
+                <div class="glass-content">
+                    <h3>About Me</h3>
+                    <p>I am a passionate ML Engineer focused on building intelligent systems. I love turning complex datasets into actionable insights.</p>
+                </div>
+            </div>
+
             <div class="person-image">
-                 <img src="res/bg_removed.png" alt="Profile Picture">
+                <img src="res/bg_removed.png" alt="Profile Picture">
             </div>
         </div>
+
+        <section class="skills-section" id="skills">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card"><i class="fa-brands fa-python"></i><h3>Python</h3><p>NumPy & Pandas.</p></div>
+                <div class="skill-card"><i class="fa-solid fa-brain"></i><h3>ML</h3><p>Predictive Modeling.</p></div>
+                <div class="skill-card"><i class="fa-solid fa-shield-halved"></i><h3>Security</h3><p>Network Protocols.</p></div>
+                <div class="skill-card"><i class="fa-solid fa-chart-simple"></i><h3>Data</h3><p>Visualization.</p></div>
+            </div>
+        </section>
+
     </div>
 
 </body>
