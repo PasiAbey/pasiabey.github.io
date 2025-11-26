@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasindu Abeysundara | Web Developer Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Config & Styles -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#0f0f11',        // Very dark background
+                        surface: '#18181b',   // Slightly lighter for cards
+                        primary: '#3b82f6',   // Blue accent
+                        text: '#e4e4e7',      // Main text
+                        muted: '#a1a1aa'      // Muted text
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for things Tailwind is too verbose for */
+        body {
+            background-color: #0f0f11;
+            color: #e4e4e7;
+        }
+        
+        /* Add new style for the giant overlay text */
+        .hero-title-overlay {
+            font-size: clamp(3rem, 15vw, 10rem); /* Responsive huge font */
+            line-height: 0.9;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            /* Blend mode for better text readability over image */
+            mix-blend-mode: overlay; 
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-bg/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="text-2xl font-bold tracking-tighter hover:text-primary transition-colors">
+                    PA<span class="text-primary">.</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="#home" class="hover:text-primary transition-colors">Home</a>
+                    <a href="#about" class="hover:text-primary transition-colors">About</a>
+                    <a href="#work" class="hover:text-primary transition-colors">Work</a>
+                    <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-muted hover:text-white">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-b border-white/5">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" class="block py-3 text-base font-medium hover:text-primary">Home</a>
+                <a href="#about" class="block py-3 text-base font-medium hover:text-primary">About</a>
+                <a href="#work" class="block py-3 text-base font-medium hover:text-primary">Work</a>
+                <a href="#contact" class="block py-3 text-base font-medium hover:text-primary">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen pt-20 flex items-center overflow-hidden bg-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col lg:flex-row gap-12 lg:gap-0">
+            
+            <!-- Left Side: Image & Overlay Title -->
+            <div class="relative lg:w-2/3 h-full flex items-end">
+                <!-- Profile Image -->
+                <img 
+                    src="res/profile.png"
+                    alt="Pasindu Abeysundara"
+                    class="w-full rounded-lg grayscale hover:grayscale-0 transition-all duration-500"
+                    onerror="this.onerror=null; this.src='https://placehold.co/800x1000/222/999?text=Add+profile.jpg';"
+                >
+                <!-- Huge Overlay Title -->
+                <h1 class="hero-title-overlay absolute bottom-0 left-0 font-black text-white tracking-tighter p-4 lg:p-8 pointer-events-none">
+                    PASINDU <br> ABEYSUNDARA
+                </h1>
+            </div>
+
+            <!-- Right Side: About Card & Socials -->
+            <div class="lg:w-1/3 flex flex-col justify-end lg:pl-12 pb-8">
+                <!-- About Card -->
+                <div class="bg-surface p-8 rounded-xl border border-white/10 mb-8">
+                    <h3 class="text-sm font-semibold text-muted uppercase tracking-widest mb-4">
+                        A little about me
+                    </h3>
+                    <p class="text-muted leading-relaxed mb-6">
+                        I'm Pasindu, a passionate web developer based in Sri Lanka. I enjoy creating things that live on the internet. My interest in web development started back in 2020 when I decided to try editing custom Tumblr themes.
+                    </p>
+                    <a href="#about" class="inline-flex items-center text-primary hover:text-white transition-colors font-medium">
+                        Read More <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Social & Scroll -->
+                <div class="flex items-center justify-between">
+                    <!-- Social Icons -->
+                    <div class="flex gap-4">
+                        <a href="#" class="p-3 bg-surface rounded-full border border-white/10 hover:bg-white/10 hover:text-primary transition-all">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="p-3 bg-surface rounded-full border border-white/10 hover:bg-white/10 hover:text-primary transition-all">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                    <!-- Scroll Down -->
+                    <a href="#about" class="flex items-center text-muted hover:text-primary transition-colors group">
+                        <span class="text-sm mr-2 font-medium">Scroll Down</span>
+                        <div class="p-3 bg-surface rounded-full border border-white/10 group-hover:bg-white/10 transition-all animate-bounce">
+                            <i data-lucide="arrow-down" class="w-5 h-5"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills/Stack Marquee -->
+    <div class="py-10 border-y border-white/5 bg-surface/30 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm font-semibold text-muted uppercase tracking-widest mb-6">Technologies I work with</p>
+            <div class="flex flex-wrap justify-center gap-8 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                <!-- Simple Text representations for cleanliness, usually these are SVGs -->
+                <span class="text-xl font-bold flex items-center gap-2"><i data-lucide="code-2" class="text-blue-400"></i> React</span>
+                <span class="text-xl font-bold flex items-center gap-2"><i data-lucide="server" class="text-green-400"></i> Node.js</span>
+                <span class="text-xl font-bold flex items-center gap-2"><i data-lucide="layout" class="text-cyan-400"></i> Tailwind</span>
+                <span class="text-xl font-bold flex items-center gap-2"><i data-lucide="database" class="text-yellow-400"></i> Firebase</span>
+                <span class="text-xl font-bold flex items-center gap-2"><i data-lucide="figma" class="text-purple-400"></i> Figma</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-start">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">About Me</h2>
+                    <div class="space-y-4 text-muted text-lg leading-relaxed">
+                        <p>
+                            Hello! I'm Pasindu, a passionate web developer based in Sri Lanka. I enjoy creating things that live on the internet. My interest in web development started back in 2020 when I decided to try editing custom Tumblr themes — turns out hacking together HTML & CSS is pretty fun!
+                        </p>
+                        <p>
+                            Fast-forward to today, and I’ve had the privilege of working at an advertising agency, a start-up, and a huge corporation. My main focus these days is building accessible, inclusive products and digital experiences for a variety of clients.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-8 grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-bg rounded-lg border border-white/5">
+                            <h3 class="text-3xl font-bold text-primary mb-1">3+</h3>
+                            <p class="text-sm text-muted">Years Experience</p>
+                        </div>
+                        <div class="p-4 bg-bg rounded-lg border border-white/5">
+                            <h3 class="text-3xl font-bold text-primary mb-1">50+</h3>
+                            <p class="text-sm text-muted">Projects Completed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold mb-4">Experience</h3>
+                    
+                    <!-- Experience Item 1 -->
+                    <div class="group p-6 bg-bg rounded-xl border border-white/5 hover:border-primary/50 transition-colors">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h4 class="font-semibold text-white group-hover:text-primary transition-colors">Senior Web Developer</h4>
+                                <p class="text-sm text-muted">Tech Solutions Inc.</p>
+                            </div>
+                            <span class="text-xs bg-white/5 px-2 py-1 rounded text-muted">2023 - Present</span>
+                        </div>
+                        <p class="text-sm text-muted mt-2">Leading the frontend team in building a new SaaS dashboard using React and TypeScript.</p>
+                    </div>
+
+                    <!-- Experience Item 2 -->
+                    <div class="group p-6 bg-bg rounded-xl border border-white/5 hover:border-primary/50 transition-colors">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h4 class="font-semibold text-white group-hover:text-primary transition-colors">Freelance Developer</h4>
+                                <p class="text-sm text-muted">Self-Employed</p>
+                            </div>
+                            <span class="text-xs bg-white/5 px-2 py-1 rounded text-muted">2021 - 2023</span>
+                        </div>
+                        <p class="text-sm text-muted mt-2">Delivered custom websites for 20+ clients, focusing on SEO performance and mobile responsiveness.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work/Projects Section -->
+    <section id="work" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2">Featured Projects</h2>
+                    <p class="text-muted">Some things I've built recently</p>
+                </div>
+                <a href="#" class="hidden sm:flex items-center text-primary hover:text-white transition-colors">
+                    View all projects <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="group relative bg-surface rounded-xl overflow-hidden border border-white/5">
+                    <div class="aspect-video bg-gray-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-bg to-transparent opacity-60"></div>
+                        <!-- Placeholder for Project Image -->
+                        <div class="w-full h-full flex items-center justify-center text-muted font-mono text-xs bg-gray-900">
+                            [Project Image Placeholder]
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">E-Commerce Dashboard</h3>
+                        <p class="text-muted text-sm mb-4">A comprehensive dashboard for managing online store inventory and analytics.</p>
+                        <div class="flex gap-2 mb-6">
+                            <span class="px-2 py-1 text-xs rounded bg-white/5 text-muted">React</span>
+                            <span class="px-2 py-1 text-xs rounded bg-white/5 text-muted">Tailwind</span>
+                            <span class="px-2 py-1 text-xs rounded bg-white/5 text-muted">Node</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <a href="#" class="text-sm font-medium hover:text-primary flex items-center"><i data-lucide="github" class="w-4 h-4 mr-1"></i> Code</a>
+                            <a href="#" class="text-sm font-medium hover:text-primary flex items-center"><i data-lucide="external-link" class="w-4 h-4 mr-1"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="group relative bg-surface rounded-xl overflow-hidden border border-white/5">
+                    <div class="aspect-video bg-gray-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-bg to-transparent opacity-60"></div>
+                        <div class="w-full h-full flex items-center justify-center text-muted font-mono text-xs bg-gray-900">
+                            [Project Image Placeholder]
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Finance App UI</h3>
+                        <p class="text-muted text-sm mb-4">Mobile-first banking application interface with real-time transaction updates.</p>
+                        <div class="flex gap-2 mb-6">
+                            <span class="px-2 py-1 text-xs rounded bg-white/5 text-muted">Vue.js</span>
+                            <span class="px-2 py-1 text-xs rounded bg-white/5 text-muted">Firebase</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <a href="#" class="text-sm font-medium hover:text-primary flex items-center"><i data-lucide="github" class="w-4 h-4 mr-1"></i> Code</a>
+                            <a href="#" class="text-sm font-medium hover:text-primary flex items-center"><i data-lucide="external-link" class="w-4 h-4 mr-1"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="group relative bg-surface rounded-xl overflow-hidden border border-white/5">
+                    <div class="aspect-video bg-gray-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-bg to-transparent opacity-60"></div>
+                        <div class="w-full h-full flex items-center justify-center text-muted font-mono text-xs bg-gray-900">
+                            [Project Image Placeholder]
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Travel API</h3>
+                        <p class="text-muted text-sm mb-4">RESTful API service for travel booking with authentication and payments.</p>
+                        <div class="flex gap-2 mb-6">
+                            <span class="px-2 py-1 text-xs rounded bg-white/5 text-muted">Node</span>
+                            <span class="px-2 py-1 text-xs rounded bg-white/5 text-muted">Express</span>
+                            <span class="px-2 py-1 text-xs rounded bg-white/5 text-muted">MongoDB</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <a href="#" class="text-sm font-medium hover:text-primary flex items-center"><i data-lucide="github" class="w-4 h-4 mr-1"></i> Code</a>
+                            <a href="#" class="text-sm font-medium hover:text-primary flex items-center"><i data-lucide="external-link" class="w-4 h-4 mr-1"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-surface relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
+
+        <div class="max-w-3xl mx-auto px-4 text-center relative z-10">
+            <h2 class="text-4xl font-bold mb-6">Let's Work Together</h2>
+            <p class="text-muted text-lg mb-10">
+                I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            </p>
+            <a href="mailto:pasindu@example.com" class="inline-flex items-center px-8 py-4 bg-primary hover:bg-blue-600 text-white font-bold rounded-full transition-transform hover:scale-105 shadow-lg shadow-primary/25">
+                <i data-lucide="mail" class="mr-2 w-5 h-5"></i>
+                Say Hello
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/5 text-center text-sm text-muted">
+        <div class="flex justify-center gap-6 mb-4">
+            <a href="#" class="hover:text-white transition-colors">GitHub</a>
+            <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+            <a href="#" class="hover:text-white transition-colors">Twitter</a>
+        </div>
+        <p>&copy; 2025 Pasindu Abeysundara. Built with HTML & Tailwind.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
