@@ -21,9 +21,13 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    /* Same aspect ratio fix for background */
-    height: 60vw; 
-    background-color: #1b1b1b; 
+    /* Keep your existing height setting (whether vh or vw) */
+    height: 100vh; 
+    
+    /* CHANGED: From #1b1b1b to #000 to match the rest of the body */
+    background-color: #000; 
+    
+    /* The shape is still there, but now it blends in perfectly */
     clip-path: polygon(0 0, 55% 0, 40% 100%, 0% 100%);
     z-index: 0; 
 }
