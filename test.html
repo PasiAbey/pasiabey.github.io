@@ -14,17 +14,41 @@
 
     <div class="bg-shape"></div>
 
-    <div class="container">
-        <nav>
-            <div class="logo">TG</div>
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#" class="btn-contact">CONTACT ME</a></li>
-            </ul>
-        </nav>
+    <!-- NEW FLOATING NAVIGATION BAR -->
+    <div class="floating-nav-wrapper">
+        <nav class="floating-nav">
+            <!-- Left: Profile Avatar (Logo) -->
+            <a href="#hero" class="nav-profile">
+                <!-- Ensure this points to your profile image -->
+                <img src="res/bg_removed.png" alt="Profile" onerror="this.src='https://placehold.co/100x100?text=TG'">
+            </a>
 
+            <!-- Center: Links -->
+            <ul class="nav-center-links">
+                <li><a href="#hero" class="nav-link-item">Home</a></li>
+                
+                <!-- Links with dropdown arrows (visual only) -->
+                <li>
+                    <a href="#skills" class="nav-link-item">
+                        Skills <i data-lucide="chevron-down"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link-item">
+                        Services <i data-lucide="chevron-down"></i>
+                    </a>
+                </li>
+                <li><a href="#" class="nav-link-item">Blogs</a></li>
+            </ul>
+
+            <!-- Right: Contact Button -->
+            <a href="#" class="nav-contact-btn">Contact Us</a>
+        </nav>
+    </div>
+    
+    <div class="container">
+        
+        <!-- Hero Section -->
         <div class="hero" id="hero">
             <div class="left-content">
                 <p class="greeting">Hi, I am</p>
@@ -39,7 +63,7 @@
 
             <div class="about-glass-card">
                 <div class="glass-content">
-                    <h3>About Me</h3>
+                    <h3>ABOUT ME</h3>
                     <p>I am a passionate ML Engineer focused on building intelligent systems. I love turning complex datasets into actionable insights.</p>
                 </div>
             </div>
@@ -61,5 +85,9 @@
 
     </div>
 
+    <!-- Initialize Lucide Icons for the chevron arrows -->
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
