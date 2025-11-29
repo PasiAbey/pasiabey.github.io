@@ -3,41 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1200">
-    <title>Portfolio - Machine Learning Engineer</title>
+    <title>Pasindu | Machine Learning Engineer</title>
     
+    <!-- Link to your CSS file -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
     <div class="bg-shape"></div>
-
+    
     <!-- NEW FLOATING NAVIGATION BAR -->
     <div class="floating-nav-wrapper">
         <nav class="floating-nav">
             <!-- Left: Profile Avatar (Logo) -->
             <a href="#hero" class="nav-profile">
-                <!-- Ensure this points to your profile image -->
                 <img src="res/bg_removed.png" alt="Profile" onerror="this.src='https://placehold.co/100x100?text=TG'">
             </a>
 
             <!-- Center: Links -->
             <ul class="nav-center-links">
                 <li><a href="#hero" class="nav-link-item">Home</a></li>
-                
-                <!-- Links with dropdown arrows (visual only) -->
+                <li>
+                    <a href="#about-detailed" class="nav-link-item">
+                        About <i data-lucide="chevron-down"></i>
+                    </a>
+                </li>
                 <li>
                     <a href="#skills" class="nav-link-item">
                         Skills <i data-lucide="chevron-down"></i>
                     </a>
                 </li>
-                <li>
-                    <a href="#" class="nav-link-item">
-                        Services <i data-lucide="chevron-down"></i>
-                    </a>
-                </li>
+                <!-- Added Projects Link -->
+                <li><a href="#projects" class="nav-link-item">Projects</a></li>
                 <li><a href="#" class="nav-link-item">Blogs</a></li>
             </ul>
 
@@ -50,6 +54,9 @@
         
         <!-- Hero Section -->
         <div class="hero" id="hero">
+            <!-- Canvas for Hero Section -->
+            <canvas id="hero-sparkles" class="section-canvas"></canvas>
+
             <div class="left-content">
                 <p class="greeting">Hi, I am</p>
                 <h1>Pasindu</h1>
@@ -63,7 +70,7 @@
 
             <div class="about-glass-card">
                 <div class="glass-content">
-                    <h3>ABOUT ME</h3>
+                    <h3>About Me</h3>
                     <p>I am a passionate ML Engineer focused on building intelligent systems. I love turning complex datasets into actionable insights.</p>
                 </div>
             </div>
@@ -73,21 +80,228 @@
             </div>
         </div>
 
+        <!-- NEW DETAILED ABOUT SECTION (Text Only) -->
+        <section class="about-detailed-section" id="about-detailed">
+            <!-- NO CANVAS HERE -->
+            <div class="about-content-wrapper" style="display: block; text-align: center;">
+                <div class="about-text-column" style="max-width: 900px; margin: 0 auto;">
+                    <h2>Who is <span class="text-highlight">Pasindu?</span></h2>
+                    <p>
+                        I am a dedicated Machine Learning Engineer with a passion for uncovering the hidden patterns within data. My journey began with a curiosity for how machines "think" and has evolved into a career building robust AI architectures.
+                    </p>
+                    <p>
+                        Specializing in Predictive Modeling and Computer Vision, I have worked on projects ranging from automated defect detection systems to real-time financial forecasting. I believe in writing clean, efficient code that not only solves problems but pushes the boundaries of what's possible.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
         <section class="skills-section" id="skills">
-            <h2 class="section-title">My Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card"><i class="fa-brands fa-python"></i><h3>Python</h3><p>NumPy & Pandas.</p></div>
-                <div class="skill-card"><i class="fa-solid fa-brain"></i><h3>ML</h3><p>Predictive Modeling.</p></div>
-                <div class="skill-card"><i class="fa-solid fa-shield-halved"></i><h3>Security</h3><p>Network Protocols.</p></div>
-                <div class="skill-card"><i class="fa-solid fa-chart-simple"></i><h3>Data</h3><p>Visualization.</p></div>
+            <!-- Canvas for Skills Section -->
+            <canvas id="skills-sparkles" class="section-canvas"></canvas>
+
+            <h2 class="section-title">My <span class="text-highlight">Skills</span></h2>
+            
+            <div class="skills-orbit">
+                
+                <!-- SVG Connections -->
+                <svg class="skill-connections" width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                    <path class="connection-line" d="M 400 300 C 250 300, 250 100, 90 100" />
+                    <path class="connection-line" d="M 400 300 C 550 300, 550 100, 710 100" />
+                    <path class="connection-line" d="M 400 300 C 250 300, 250 500, 90 500" />
+                    <path class="connection-line" d="M 400 300 C 550 300, 550 500, 710 500" />
+                </svg>
+
+                <!-- Center Avatar -->
+                <div class="center-skill-avatar">
+                    <img src="res/about_avatar.png" alt="Pasindu Avatar">
+                </div>
+
+                <!-- Floating Skill Cards -->
+                <div class="skill-card skill-pos-1">
+                    <i class="fa-brands fa-python"></i>
+                    <h3>Python</h3>
+                    <p>NumPy & Pandas.</p>
+                </div>
+
+                <div class="skill-card skill-pos-2">
+                    <i class="fa-solid fa-brain"></i>
+                    <h3>ML</h3>
+                    <p>Predictive Modeling.</p>
+                </div>
+
+                <div class="skill-card skill-pos-3">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h3>Security</h3>
+                    <p>Network Protocols.</p>
+                </div>
+
+                <div class="skill-card skill-pos-4">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <h3>Data</h3>
+                    <p>Visualization.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION (Bento Grid) -->
+        <section class="projects-section" id="projects">
+            <div class="container">
+                <h2 class="section-title">My <span class="text-highlight">Projects</span></h2>
+                
+                <div class="bento-grid">
+                    <!-- Item 1: Financial Forecasting -->
+                    <div class="bento-item item-1">
+                        <i class="fa-solid fa-chart-line bento-icon"></i>
+                        <h3 class="bento-title">AI Financial Forecasting</h3>
+                        <p class="bento-desc">Predicting market trends using advanced LSTM networks and real-time data analysis.</p>
+                    </div>
+
+                    <!-- Item 2: Tech Stack (Tall) -->
+                    <div class="bento-item item-2">
+                        <i class="fa-solid fa-layer-group bento-icon"></i>
+                        <h3 class="bento-title">Full Stack ML</h3>
+                        <p class="bento-desc">
+                            End-to-end machine learning pipeline development using TensorFlow, PyTorch, and Docker for scalable deployment.
+                            <br><br>
+                            Integrating models seamlessly into web applications with React and FastAPI.
+                        </p>
+                    </div>
+
+                    <!-- Item 3: Computer Vision -->
+                    <div class="bento-item item-3">
+                        <i class="fa-solid fa-eye bento-icon"></i>
+                        <h3 class="bento-title">Vision Guard</h3>
+                        <p class="bento-desc">Automated defect detection system for manufacturing using CNNs and edge computing.</p>
+                    </div>
+
+                    <!-- Item 4: NLP Chatbot -->
+                    <div class="bento-item item-4">
+                        <i class="fa-solid fa-comments bento-icon"></i>
+                        <h3 class="bento-title">Smart NLP Chatbot</h3>
+                        <p class="bento-desc">Context-aware customer support agent built with Transformer models and LangChain.</p>
+                    </div>
+
+                    <!-- Item 5: Collaboration -->
+                    <div class="bento-item item-5">
+                        <i class="fa-solid fa-handshake bento-icon"></i>
+                        <h3 class="bento-title">Ready to Collaborate</h3>
+                        <p class="bento-desc">Open to freelance projects and full-time roles. Let's build something amazing together.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
     </div>
 
-    <!-- Initialize Lucide Icons for the chevron arrows -->
+    <!-- Initialize Lucide Icons -->
     <script>
         lucide.createIcons();
+    </script>
+
+    <!-- Independent Sparkles Animation Script -->
+    <script>
+        class SparkleSystem {
+            constructor(canvasId, particleCount = 50) {
+                this.canvas = document.getElementById(canvasId);
+                // Safety check if canvas exists
+                if (!this.canvas) return;
+                
+                this.ctx = this.canvas.getContext('2d');
+                this.particles = [];
+                this.particleCount = particleCount;
+                this.width = 0;
+                this.height = 0;
+                
+                this.init();
+            }
+
+            resize() {
+                // Resize based on the parent container's size, not the window
+                if (this.canvas.parentElement) {
+                    this.width = this.canvas.parentElement.offsetWidth;
+                    this.height = this.canvas.parentElement.offsetHeight;
+                    this.canvas.width = this.width;
+                    this.canvas.height = this.height;
+                }
+            }
+
+            init() {
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+
+                for (let i = 0; i < this.particleCount; i++) {
+                    this.particles.push(new this.Sparkle(this));
+                }
+                
+                this.animate();
+            }
+
+            animate() {
+                this.ctx.clearRect(0, 0, this.width, this.height);
+                this.particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(() => this.animate());
+            }
+
+            // Inner class for individual sparkle
+            Sparkle = class {
+                constructor(system) {
+                    this.system = system;
+                    this.reset();
+                    // Initial random placement
+                    this.x = Math.random() * system.width;
+                    this.y = Math.random() * system.height;
+                }
+
+                reset() {
+                    this.x = Math.random() * this.system.width;
+                    this.y = Math.random() * this.system.height;
+                    this.size = Math.random() * 2 + 0.5;
+                    this.speedX = (Math.random() - 0.5) * 0.5;
+                    this.speedY = (Math.random() - 0.5) * 0.5;
+                    this.opacity = Math.random();
+                    this.fadeSpeed = Math.random() * 0.02 + 0.005;
+                    this.fadeDir = 1;
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    // Wrap edges
+                    if (this.x < 0) this.x = this.system.width;
+                    if (this.x > this.system.width) this.x = 0;
+                    if (this.y < 0) this.y = this.system.height;
+                    if (this.y > this.system.height) this.y = 0;
+
+                    this.opacity += this.fadeSpeed * this.fadeDir;
+                    if (this.opacity >= 1 || this.opacity <= 0.1) {
+                        this.fadeDir *= -1;
+                    }
+                }
+
+                draw() {
+                    const ctx = this.system.ctx;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(200, 255, 255, ${this.opacity})`;
+                    ctx.shadowBlur = 5;
+                    ctx.shadowColor = "cyan";
+                    ctx.fill();
+                }
+            }
+        }
+
+        // Instantiate for both sections
+        document.addEventListener('DOMContentLoaded', () => {
+            new SparkleSystem('hero-sparkles', 60);
+            new SparkleSystem('skills-sparkles', 50);
+        });
     </script>
 </body>
 </html>

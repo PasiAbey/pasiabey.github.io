@@ -1,323 +1,564 @@
 /* --- Global Reset --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #000; 
-            color: #fff;
-            overflow-x: hidden; 
-            min-width: 1200px; 
-        }
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #000; 
+    color: #fff;
+    overflow-x: hidden; 
+    min-width: 1200px; /* Enforce desktop view width */
+}
 
-        /* --- Background --- */
-        .bg-shape {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh; 
-            background-color: #000; 
-            clip-path: polygon(0 0, 55% 0, 40% 100%, 0% 100%);
-            z-index: 0; 
-        }
+/* --- Background Shape --- */
+.bg-shape {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; 
+    background-color: #000; 
+    clip-path: polygon(0 0, 55% 0, 40% 100%, 0% 100%);
+    z-index: 0; 
+}
 
-        /* --- Container --- */
-        .container {
-            width: 90%; 
-            max-width: 1600px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1; 
-        }
+/* --- SECTION BACKGROUND CANVAS --- */
+/* Common style for background canvases in Hero and Skills */
+.section-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Behind content */
+    pointer-events: none; 
+    filter: blur(2px);
+}
 
-        /* --- NEW FLOATING NAVIGATION CSS --- */
-        .floating-nav-wrapper {
-            position: fixed;
-            top: 20px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            z-index: 1000; /* High z-index to stay on top */
-            padding: 0 20px;
-        }
+/* --- Container --- */
+.container {
+    width: 90%; 
+    max-width: 1600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10; /* Ensure content is above the canvas */
+}
 
-        .floating-nav {
-            /* --- LIQUID GLASS EFFECT START --- */
-            background: rgba(20, 20, 20, 0.4); /* Very sheer dark background */
-            backdrop-filter: blur(15px); /* Strong blur for the glass look */
-            -webkit-backdrop-filter: blur(15px); /* Safari support */
-            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white edge */
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5); /* Deep glass shadow */
-            /* --- LIQUID GLASS EFFECT END --- */
+/* --- FLOATING NAVIGATION CSS --- */
+.floating-nav-wrapper {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    padding: 0 20px;
+}
 
-            border-radius: 50px; /* Pill shape */
-            padding: 10px 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 900px; /* Control max width */
-            transition: 0.3s ease;
-        }
-        
-        /* Optional: Add a subtle glow on hover */
-        .floating-nav:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 40px rgba(0, 255, 255, 0.1);
-        }
+.floating-nav {
+    background: rgba(20, 20, 20, 0.4); 
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px); 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5); 
+    border-radius: 50px; 
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 900px; 
+    transition: 0.3s ease;
+}
 
-        /* Profile Image in Nav */
-        .nav-profile img {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            transition: 0.3s;
-            display: block;
-        }
+.floating-nav:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 255, 255, 0.1);
+}
 
-        .nav-profile img:hover {
-            border-color: #fff;
-            transform: scale(1.05);
-        }
+.nav-profile img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+    display: block;
+}
 
-        /* Center Links */
-        .nav-center-links {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            list-style: none;
-        }
+.nav-profile img:hover {
+    border-color: #fff;
+    transform: scale(1.05);
+}
 
-        .nav-link-item {
-            color: #ccc;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: 0.3s;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Better readability on glass */
-        }
+.nav-center-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+}
 
-        .nav-link-item:hover {
-            color: #fff;
-            text-shadow: 0 0 8px rgba(255,255,255,0.4);
-        }
+.nav-link-item {
+    color: #ccc;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: 0.3s;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
 
-        .nav-link-item i {
-            width: 16px;
-            height: 16px;
-        }
+.nav-link-item:hover {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255,255,255,0.4);
+}
 
-        /* Contact Button */
-        .nav-contact-btn {
-            background-color: #fff;
-            color: #000 !important;
-            padding: 10px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 0.9rem;
-            transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
+.nav-link-item i {
+    width: 16px;
+    height: 16px;
+}
 
-        .nav-contact-btn:hover {
-            transform: scale(1.05);
-            background-color: #f0f0f0;
-            box-shadow: 0 6px 20px rgba(255,255,255,0.2);
-        }
+.nav-contact-btn {
+    background-color: #fff;
+    color: #000 !important;
+    padding: 10px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.9rem;
+    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
 
+.nav-contact-btn:hover {
+    transform: scale(1.05);
+    background-color: #f0f0f0;
+    box-shadow: 0 6px 20px rgba(255,255,255,0.2);
+}
 
-        /* --- Hero Section --- */
-        .hero {
-            height: 55vw; 
-            max-height: 85vh;
-            min-height: 650px; 
-            display: flex;
-            align-items: center; 
-            position: relative;
-            padding-top: 150px; /* Increased padding to create gap from nav */
-        }
+/* --- Hero Section --- */
+.hero {
+    height: 55vw; 
+    max-height: 85vh;
+    min-height: 650px; 
+    display: flex;
+    align-items: center; 
+    position: relative;
+    padding-top: 150px; /* Space for the fixed nav */
+    overflow: hidden; /* Contains sparkles */
+}
 
-        /* --- Text Content --- */
-        .left-content {
-            width: 40%; 
-            z-index: 10;
-        }
+.left-content {
+    width: 40%; 
+    z-index: 10;
+}
 
-        .greeting {
-            font-size: 1.5vw; 
-            font-weight: 600;
-            color: #fff; 
-            margin-bottom: 1vh;
-        }
+.greeting {
+    font-size: 1.5vw; 
+    font-weight: 600;
+    color: #fff; 
+    margin-bottom: 1vh;
+}
 
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 5vw; 
-            font-weight: 800;
-            color: #fff; 
-            line-height: 1.1;
-            margin-bottom: 1vh;
-            white-space: nowrap; 
-        }
+h1 {
+    font-size: 5vw; 
+    font-weight: 800;
+    color: #fff; 
+    line-height: 1.1;
+    margin-bottom: 1vh;
+    white-space: nowrap; 
+}
 
-        .role {
-            font-size: 1.2vw;
-            color: #888; 
-            font-weight: 600;
-            margin-bottom: 4vh;
-        }
+.role {
+    font-size: 1.2vw;
+    color: #888; 
+    font-weight: 600;
+    margin-bottom: 4vh;
+}
 
-        .socials {
-            display: flex;
-            gap: 1vw;
-        }
+.socials {
+    display: flex;
+    gap: 1vw;
+}
 
-        .social-icon {
-            width: 3.5vw; 
-            height: 3.5vw;
-            background-color: #333; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            color: #fff; 
-            font-size: 1.5vw; 
-            border-radius: 5px;
-            transition: 0.3s;
-        }
+.social-icon {
+    width: 3.5vw; 
+    height: 3.5vw;
+    background-color: #333; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #fff; 
+    font-size: 1.5vw; 
+    border-radius: 5px;
+    transition: 0.3s;
+}
 
-        .social-icon:hover {
-            transform: translateY(-3px);
-            background-color: #fff; 
-            color: #000; 
-        }
+.social-icon:hover {
+    transform: translateY(-3px);
+    background-color: #fff; 
+    color: #000; 
+}
 
-        /* --- Glass Window --- */
-        .about-glass-card {
-            position: absolute;
-            right: 0; 
-            top: 50%;
-            transform: translateY(-50%);
-            width: 22vw; 
-            padding: 2vw; 
-            z-index: 15;
-            background: rgba( 255, 255, 255, 0.05 ); 
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5); 
-            backdrop-filter: blur( 10px ); 
-            -webkit-backdrop-filter: blur( 10px );
-            border: 1px solid rgba( 255, 255, 255, 0.1 ); 
-            border-radius: 15px; 
-            transition: 0.3s;
-        }
+/* --- Glass Window (Small About) --- */
+.about-glass-card {
+    position: absolute;
+    right: 0; 
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22vw; 
+    padding: 2vw; 
+    z-index: 15;
+    background: rgba( 255, 255, 255, 0.05 ); 
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur( 10px ); 
+    -webkit-backdrop-filter: blur( 10px );
+    border: 1px solid rgba( 255, 255, 255, 0.1 ); 
+    border-radius: 15px; 
+    transition: 0.3s;
+}
 
-        .about-glass-card:hover {
-            background: rgba( 255, 255, 255, 0.08 );
-            border-color: #00ffff; 
-        }
+.about-glass-card:hover {
+    background: rgba( 255, 255, 255, 0.08 );
+    border-color: #00ffff; 
+}
 
-        .glass-content h3 {
-            margin-bottom: 15px;
-            font-size: 1.5vw;
-            color: #fff;
-            border-bottom: 3px solid cyan;
-            display: inline-block;
-        }
+.glass-content h3 {
+    margin-bottom: 15px;
+    font-size: 1.5vw;
+    color: #fff;
+    border-bottom: 3px solid cyan;
+    display: inline-block;
+}
 
-        .glass-content p {
-            font-size: 0.9vw; 
-            line-height: 1.6;
-            color: #ccc; 
-        }
+.glass-content p {
+    font-size: 0.9vw; 
+    line-height: 1.6;
+    color: #ccc; 
+}
 
-        /* --- Person Image --- */
-        .person-image {
-            position: absolute;
-            bottom: 0;
-            left: 48%; 
-            transform: translateX(-40%);
-            height: 82%; /* Reduced height to ensure image head doesn't touch nav */
-            z-index: 5; 
-            pointer-events: none;
-            display: flex;
-            align-items: flex-end; 
-        }
+/* --- Person Image --- */
+.person-image {
+    position: absolute;
+    bottom: 0;
+    left: 48%; 
+    transform: translateX(-40%);
+    height: 82%; 
+    z-index: 5; 
+    pointer-events: none;
+    display: flex;
+    align-items: flex-end; 
+}
 
-        .person-image img {
-            height: 100%;
-            width: auto;
-            object-fit: contain; 
-            object-position: bottom center; 
-            filter: drop-shadow(0px 0px 50px rgba(0, 255, 255, 0.3)); 
-        }
+.person-image img {
+    height: 100%;
+    width: auto;
+    object-fit: contain; 
+    object-position: bottom center; 
+    filter: drop-shadow(0px 0px 50px rgba(0, 255, 255, 0.3)); 
+}
 
-        /* --- Skills Section --- */
-        .skills-section {
-            padding: 5vh 0;
-            position: relative;
-            background-color: #000; 
-            z-index: 10;
-        }
+/* --- SECTION: Detailed About (Text Only) --- */
+.about-detailed-section {
+    padding: 15vh 0; 
+    position: relative;
+    z-index: 5;
+    background-color: #000;
+}
 
-        .section-title {
-            font-size: 2.5vw;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 5vh;
-            text-transform: uppercase;
-            border-bottom: 4px solid cyan;
-            display: inline-block;
-        }
+.about-content-wrapper {
+    display: block; 
+    text-align: center;
+}
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); 
-            gap: 2vw;
-        }
+.about-text-column {
+    max-width: 900px; 
+    margin: 0 auto;
+}
 
-        .skill-card {
-            background-color: #111; 
-            padding: 3vw 2vw;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid #333;
-            transition: 0.3s;
-        }
+.about-text-column h2 {
+    font-size: 2.5vw;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 3vh;
+    text-transform: uppercase;
+    display: inline-block;
+}
 
-        .skill-card:hover {
-            transform: translateY(-10px);
-            border-color: cyan;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-        }
+.text-highlight {
+    color: cyan;
+    position: relative;
+}
 
-        .skill-card i {
-            font-size: 3vw;
-            color: #888;
-            margin-bottom: 2vh;
-        }
+.about-text-column p {
+    color: #bbb;
+    line-height: 1.8;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
 
-        .skill-card:hover i { color: cyan; }
+/* --- Skills Section --- */
+.skills-section {
+    padding: 10vh 0;
+    position: relative;
+    background-color: #000; 
+    z-index: 10;
+    text-align: center;
+    overflow: hidden; /* Contains sparkles */
+}
 
-        .skill-card h3 {
-            margin-bottom: 1vh;
-            color: #fff;
-            font-weight: 700;
-            font-size: 1.2vw;
-        }
+.section-title {
+    font-size: 2.5vw;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 5vh;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+}
 
-        .skill-card p {
-            color: #888;
-            line-height: 1.5;
-            font-size: 0.8vw;
-        }
+/* Orbit Container */
+.skills-orbit {
+    position: relative;
+    width: 800px; 
+    height: 600px; 
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+/* Connections SVG */
+.skill-connections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Above background canvas, below cards */
+    pointer-events: none;
+}
+
+.connection-line {
+    fill: none;
+    stroke: rgba(0, 255, 255, 0.4);
+    stroke-width: 2;
+    stroke-dasharray: 10, 10;
+    animation: dash-flow 1s linear infinite;
+}
+
+@keyframes dash-flow {
+    to { stroke-dashoffset: -20; }
+}
+
+/* Center Avatar */
+.center-skill-avatar {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 1;
+}
+
+.center-skill-avatar img {
+    width: 100%;
+    height: 90%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+}
+
+/* --- SKILL CARDS (Liquid Glass) --- */
+.skill-card {
+    /* Liquid Glass Effect (Default State) */
+    background: rgba(255, 255, 255, 0.05); /* Light transparent base for glass */
+    backdrop-filter: blur(10px); /* Medium blur */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Slightly brighter border */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+
+    /* Default: Small Circle */
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    
+    /* Center Content */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    position: absolute; 
+    z-index: 2;
+    overflow: hidden; 
+    animation: float 6s ease-in-out infinite; 
+}
+
+.skill-card:hover {
+    /* Hover: Large Square with Strong Glass Effect */
+    width: 180px;
+    height: 180px;
+    border-radius: 15px; 
+    border-color: rgba(0, 255, 255, 0.6); /* Glowing Cyan border */
+    
+    /* Very transparent background to ensure lines are visible through it */
+    background: rgba(255, 255, 255, 0.03); 
+    backdrop-filter: blur(10px); /* Stronger blur for lines underneath */
+    -webkit-backdrop-filter: blur(10px);
+    
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.2); /* Outer Glow */
+    z-index: 20; 
+}
+
+/* Icon Styling */
+.skill-card i {
+    font-size: 1.8rem; 
+    color: #ccc;
+    margin-bottom: 0;
+    transition: 0.3s;
+}
+
+.skill-card:hover i {
+    color: cyan;
+    font-size: 2.5rem;
+    margin-bottom: 15px; 
+}
+
+/* Text Elements */
+.skill-card h3 {
+    margin-bottom: 5px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    opacity: 0;
+    max-height: 0;
+    transition: 0.3s;
+}
+
+.skill-card p {
+    color: #bbb;
+    line-height: 1.4;
+    font-size: 0.85rem;
+    opacity: 0;
+    max-height: 0;
+    transition: 0.3s;
+}
+
+.skill-card:hover h3,
+.skill-card:hover p {
+    opacity: 1;
+    max-height: 50px; 
+}
+
+/* Specific Positions (Aligning cards with SVG path ends) */
+.skill-pos-1 { top: 10%; left: 5%; animation-delay: 0s; }
+.skill-pos-2 { top: 10%; right: 5%; animation-delay: 1.5s; }
+.skill-pos-3 { bottom: 10%; left: 5%; animation-delay: 3s; }
+.skill-pos-4 { bottom: 10%; right: 5%; animation-delay: 4.5s; }
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* --- PROJECTS SECTION (Bento Grid) --- */
+.projects-section {
+    padding: 10vh 0;
+    position: relative;
+    background-color: #000;
+    z-index: 10;
+    text-align: center;
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 50px auto 0;
+    /* Explicit row sizing to create the packed look */
+    grid-auto-rows: 250px; 
+    text-align: left; /* Reset text align for content inside cards */
+}
+
+.bento-item {
+    /* Base dark background with slight gradient for depth */
+    background: linear-gradient(180deg, rgba(30, 30, 30, 0.6) 0%, rgba(10, 10, 10, 0.4) 100%);
+    
+    /* Static spotlight effect: Subtle cyan glow from top right */
+    background-image: radial-gradient(circle at 90% 0%, rgba(0, 255, 255, 0.08) 0%, transparent 50%);
+    
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* Clearer border to define the shape without hover */
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align content to bottom */
+    padding: 25px;
+}
+
+.bento-item:hover {
+    border-color: cyan;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
+    transform: translateY(-5px);
+    /* Enhance the glow on hover */
+    background-image: radial-gradient(circle at 90% 0%, rgba(0, 255, 255, 0.15) 0%, transparent 60%);
+}
+
+/* Content Styling inside Bento Items */
+.bento-icon {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    font-size: 2rem;
+    color: #777; /* Visible grey */
+    transition: 0.3s;
+}
+
+.bento-item:hover .bento-icon {
+    color: cyan;
+}
+
+.bento-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.bento-desc {
+    font-size: 0.85rem;
+    color: #ccc; /* Lighter grey for better visibility */
+    line-height: 1.5;
+}
+
+/* Specific Bento Layout Positioning (3 Columns) */
+/* Row 1 */
+.item-1 { grid-column: span 1; grid-row: span 1; }
+.item-2 { grid-column: span 1; grid-row: span 2; } /* Tall Middle Card */
+.item-3 { grid-column: span 1; grid-row: span 1; }
+/* Row 2 */
+.item-4 { grid-column: span 1; grid-row: span 1; }
+.item-5 { grid-column: span 1; grid-row: span 1; }
